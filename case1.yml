@@ -1,0 +1,11 @@
+---
+ - name: service & copy
+   hosts: vlab2
+   tasks: 
+     - name: copy sshd file
+       copy: src=/var/www/html/index.html dest=/var/www/html/
+       notify: service restart
+
+   handlers: 
+     - name: service restart
+       service: name=httpd state=restarted

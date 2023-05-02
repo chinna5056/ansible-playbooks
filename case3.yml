@@ -1,0 +1,14 @@
+---
+   - name: case3
+     hosts: vlab2
+     tasks: 
+       - name: install httpd
+         yum: name=httpd state=present
+         notify: service restarted
+
+       - name: copying file
+         copy: src=/var/www/html/index.html dest=/var/www/html/
+     handlers: 
+       - name: service restart
+         service: name=httpd state=restarted 
+         listen: service restarted
