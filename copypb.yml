@@ -1,0 +1,15 @@
+---
+   - name: this playbook for copying files
+     hosts: all
+     tasks: 
+       - name: vlab1 task
+         copy:
+          src: /tmp/messages
+          dest: /tmp/newmsg
+          owner: vara
+          group: bat22a
+          mode: 644
+
+       - name: entry line
+         lineinfile: dest=/tmp/newmsg line='iam from ramachandrapuram'
+...

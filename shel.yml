@@ -1,0 +1,6 @@
+---
+   - name: outputs check
+     hosts: all
+     tasks:
+       - name: shell
+         shell: 'ls -l /tmp/'

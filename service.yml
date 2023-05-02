@@ -1,0 +1,7 @@
+---
+  - name: service
+    hosts: all
+    tasks: 
+       - name: through service module 
+         service: name=httpd state=started enabled=yes
+...

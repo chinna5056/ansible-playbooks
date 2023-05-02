@@ -1,0 +1,10 @@
+---
+  - name: appending line in file
+    hosts: all
+    tasks: 
+      - name: create file
+        file: dest=/var/www/html/index.html state=touch
+
+      - name: append the line in webpage file
+        lineinfile: dest=/var/www/html/index.html line='HII THIS IS VAMSI MATTAPARTHI'
+...

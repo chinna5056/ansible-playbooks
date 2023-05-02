@@ -1,0 +1,7 @@
+---
+  - name: my first playbook
+    hosts: vlab1
+    tasks:
+        - name: copying file from server to remote server
+          copy: dest=/tmp/testing src=/tmp/optest
+...

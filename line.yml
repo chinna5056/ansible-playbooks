@@ -1,0 +1,7 @@
+---
+  - name: adding line in messages
+    hosts: all
+    tasks: 
+      - name: append line in messages file
+        lineinfile: dest=/tmp/messages line='hii this is vamsi mattaparthi'
+...
