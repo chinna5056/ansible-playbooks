@@ -1,0 +1,5 @@
+---
+  - name: this is sample playbook
+    host: <hostname>
+    tasks:
+...
