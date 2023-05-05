@@ -1,0 +1,52 @@
+---
+  - name: aws instance
+    hosts: aws1
+    tasks: 
+
+      - name: monetiring commands
+        command: mkfs -t xfs /dev/xvdb
+        tags: mk
+
+      - name: mount fs
+        command: mount -t xfs /dev/xvdb /vamsi
+        tags: mount
+
+      - command: date
+        register: date
+        tags: date
+      - debug: var=date.stdout
+
+      - command: uptime
+        register: up
+        tags: up
+      - debug: var=up.stdout_lines
+
+      - command: uname -a
+        register: kern
+        tags: kern
+      - debug: var=kern.stdout_lines
+
+      - file: dest=/akhil state=directory
+
+      - command: df -h /akhil
+        register: df
+        tags: df
+      - debug: var=df.stdout_lines
+
+      - copy:
+            dest: /var/www/html/index.html 
+            content: <h1 style="font-size:60px;">AKHIL SADINENI ((22-02-2023))</h1>
+        tags: line
+
+      - service: name=httpd state=restarted
+        
+      - command: httpd -version
+        register: hv
+        tags: hv
+      - debug: var=hv.stdout
+  
+      - command: vsftpd -version
+        register: vf
+        tags: vf
+      - debug: var=vf.stdout
+
