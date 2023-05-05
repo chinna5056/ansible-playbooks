@@ -1,0 +1,24 @@
+---
+  - name: monitoring commands
+    hosts: node1
+    tasks: 
+      - name: hostname
+        command: hostname
+        register: host
+      - debug: var=host.stdout
+      - name: hostname
+        command: uname -a
+        register: name
+        tags: name
+        verbosity: 1
+      - debug: var=name.stdout
+      - name: hostname
+        command: date
+        register: date
+        tags: date
+      - debug: var=date.stdout
+      - name: hostname
+        command: df -h
+        register: df
+        tags: df
+      - debug: var=df.stdout
