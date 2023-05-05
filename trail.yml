@@ -1,0 +1,22 @@
+---
+  - name: config web
+    hosts: node1
+    tasks:
+      - name: create file
+        file: dest=/var/www/html/index.html state=touch
+        notify: entry
+    handlers:
+      - name: entry
+        lineinfile: dest=/var/www/html/index.html line='MATTAPARTHI VAMSI from RCPM estd'
+        register: ok
+      - name: service restart
+        service: name=httpd state=restarted
+        when: ok.changed
+        register: done
+      - copy: src=/root/new/line.yml dest=/var/www/html/index.html
+        tags: 
+           - want
+
+      - name: service restart
+        service: name=httpd state=restarted
+
