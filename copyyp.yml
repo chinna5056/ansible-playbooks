@@ -1,5 +1,5 @@
 ---
-  - name: create file
+  - name: create new file
     hosts: all
     tasks: 
        - name: create html file
