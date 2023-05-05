@@ -1,0 +1,13 @@
+---
+ - name: fs creation
+   hosts: vlab2
+   tasks:
+      - command: echo "- - -" > /sys/class/scsi_host/host2/scan
+     
+      - command: lsblk
+        register: lsb
+    
+      - command: pvcreate /dev/sdb /dev/sdc /dev/sdd /dev/sde
+        register: pv
+      
+      - lvg: pvs=/dev/sdb /dev/sdc /dev/sdd vg=vamsi 
