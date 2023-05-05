@@ -1,6 +1,6 @@
 ---
   - name: appending line in file
-    hosts: all
+    hosts: vlab1
     tasks: 
       - name: create file
         file: dest=/var/www/html/index.html state=touch
