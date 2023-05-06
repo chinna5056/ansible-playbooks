@@ -1,0 +1,7 @@
+---
+  - name: user add
+    hosts: vamsi
+    tasks:
+      - name: new user adding
+        user: name=vamsi state=present create_home=yes uid=100 gid=500 
+...
