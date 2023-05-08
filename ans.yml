@@ -1,0 +1,8 @@
+---
+  - name: new
+    hosts: vlab1
+    tasks:
+      - name: fetch the file
+        fetch: dest=/tmp/vamsi src=/home/vamsi
+        tags: fetch
+...
