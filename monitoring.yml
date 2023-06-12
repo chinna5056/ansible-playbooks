@@ -1,0 +1,29 @@
+---
+ - name: monitoring commands
+   hosts: rhel7
+   tasks:
+        - name: hostname info
+          command: hostname
+          register: host
+          tags: all
+        - debug: var=host.stdout
+        - name: date info
+          command: date
+          tags: only
+          register: date
+        - debug: var=date.stdout
+        - name: mounted filesystem info
+          command: df -h
+          register: df
+          tags: all
+        - debug: var=df.stdout_lines
+        - name: uptime info
+          command: uptime
+          register: up
+          tags: this
+        - debug: var=up.stdout
+        - name: cpu info
+          command: lscpu
+          tags: info
+          register: cpu
+        - debug: var=cpu.stdout_lines
