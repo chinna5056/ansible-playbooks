@@ -1,0 +1,13 @@
+#!/usr/bin/ansible-playbook
+---
+ - name: copy module playbook
+   hosts: app
+   tasks: 
+     - name: copy the host information
+       copy: 
+         dest: if [ `ls -ld /tmp/vamsi/hosts_bkp|wc -l` == 1 ];then rm -rf /tmp/vamsi/hosts_bkp;else echo 'there is no file'; fi 
+         src: /etc/hosts
+         remote_src: yes
+         owner: vamsi
+         mode: 777
+         group: vamsi

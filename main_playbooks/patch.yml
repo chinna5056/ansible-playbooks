@@ -1,0 +1,12 @@
+#!/bin/bash
+---
+ - name: patch the servers
+   hosts: all
+   gather_facts: true
+   tasks:
+        - name: check the os if it is Rhel proceed
+          yum:
+                name: '*'
+                state: latest
+          when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
+

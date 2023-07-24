@@ -1,0 +1,21 @@
+#!/usr/bin/ansible-playbook
+---
+ - name: loops
+   hosts: all
+   tasks:
+        - name: add multiple user in server
+          user: 
+                name: "{{ item }}"
+                state: present
+          with_items:
+                - ans1
+                - ans2
+                - ans3
+        - name: install multiple pkgs
+          yum: 
+                name: "{{ item }}"
+                state: present
+          loop:
+                - vsftpd
+                - httpd
+                - finger

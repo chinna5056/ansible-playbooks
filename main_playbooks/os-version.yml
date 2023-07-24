@@ -1,0 +1,7 @@
+#!/bin/bash
+---
+ - name: os-verison check
+   hosts: os
+   tasks:
+        - name: os-version checking
+          command: A=`awk '/ID/{print}' /etc/os-release|head -1`;B=ID="rhel";if [ "$A" == "$B" ];then 

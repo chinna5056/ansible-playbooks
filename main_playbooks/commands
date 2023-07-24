@@ -1,0 +1,39 @@
+Script started on Fri 14 Jul 2023 04:18:36 AM IST
+]0;root@ansible-master-23:/playbooks[?1034h[root@ansible-master-23 playbooks]# ansible-playbook register.yml --list-hosts
+
+playbook: register.yml
+
+  play #1 (all): checking monitoring commands	TAGS: []
+    pattern: [u'all']
+    hosts (3):
+      ans-client-23-A
+      ans-client-23-B
+      script
+]0;root@ansible-master-23:/playbooks[root@ansible-master-23 playbooks]# ansible-playbook debug.yml --list-tasks
+
+playbook: debug.yml
+
+  play #1 (all): print info	TAGS: []
+    tasks:
+      hostname info	TAGS: []
+      ip info	TAGS: []
+      ip info	TAGS: []
+      ip info	TAGS: []
+]0;root@ansible-master-23:/playbooks[root@ansible-master-23 playbooks]# ansible-playbook debug.yml --list-tasks[1P[1P[1P[1P[1P[1@r[1@e[1@g[1@i[8@ster.yml[1P[1P[1P[1P --list-tasks
+
+playbook: register.yml
+
+  play #1 (all): checking monitoring commands	TAGS: []
+    tasks:
+      uptime of the server	TAGS: []
+      debug	TAGS: []
+      kernel version of the server	TAGS: []
+      debug	TAGS: []
+      mounted fs info	TAGS: []
+      debug	TAGS: []
+      date of the server	TAGS: []
+      debug	TAGS: []
+]0;root@ansible-master-23:/playbooks[root@ansible-master-23 playbooks]# exit
+exit
+
+Script done on Fri 14 Jul 2023 04:25:13 AM IST

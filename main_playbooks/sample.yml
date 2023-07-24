@@ -1,0 +1,6 @@
+#!/usr/bin/ansible-playbook
+---
+ - name: this is sample playbook
+   hosts: db
+   tasks: 
+...

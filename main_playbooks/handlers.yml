@@ -1,0 +1,29 @@
+#!/usr/bin/ansible-playbook
+---
+ - name: handlers
+   hosts: all
+   tasks: 
+        - name: install httpd pkg
+          yum:
+                name: httpd
+                state: present
+        - name: add the file
+          file: 
+                dest: /var/www/html/index.html
+                state: touch
+        - name: add content in file
+          lineinfile: 
+                line: "THIS IS ANSIBLE SERVER"
+                dest: /var/www/html/index.html 
+          notify: service restart
+   handlers:
+        - name: service restart
+          service: 
+                name: httpd
+                state: started
+          register: enable
+        - name: enable the service across the reboot
+          service: 
+                name: httpd
+                enabled: yes
+          when: enable.changed

@@ -1,0 +1,11 @@
+#!/usr/bin/ansible-playbook
+---
+        - name: run the local scripts
+          hosts: all
+          gather_facts: true
+          tasks:
+                - name: run the script
+                  script: /tmp/script.sh
+                  register: output
+                - name: shows the output
+                  debug: var=output.stdout_lines

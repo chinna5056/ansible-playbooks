@@ -1,0 +1,21 @@
+#!/usr/bin/ansible-playbook
+---
+ - name: print info
+   hosts: all
+   tasks:
+     - name: hostname info
+       debug: 
+         msg:
+                - "this is my hostname : {{inventory_hostname}}"
+                - "this is my hostname1 : {{inventory_hostname}}"
+                - "this is my hostname2 : {{inventory_hostname}}"
+                - "this is my hostname3 : {{inventory_hostname}}"
+     - name: ip info
+       debug: 
+         var: inventory_hostname
+     - name: ip info
+       debug: 
+         var: ansible_default_ipv4.address
+     - name: ip info
+       debug: 
+         var: ansible_facts['fqdn']

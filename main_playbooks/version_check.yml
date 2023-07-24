@@ -1,0 +1,16 @@
+#!/bin/bash
+---
+ - name: os version check
+   hosts: all
+   gather_facts: true
+   tasks:
+        - name: check services running or not
+          command: "ps -elf|grep -i http|grep -v grep"
+        - name: os version check
+          debug: var=ansible_distribution
+          register: os
+        - name: service start
+          service: 
+                name: httpd
+                state: restarted
+          when: os.stdout == "RedHat"

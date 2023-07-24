@@ -1,0 +1,8 @@
+#[app]
+#ans-client-23-A
+[db]
+ans-client-23-B
+[rhel7]
+script
+[local]
+self

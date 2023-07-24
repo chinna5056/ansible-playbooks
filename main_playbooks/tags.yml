@@ -1,0 +1,28 @@
+#!/usr/bin/ansible-playbook
+---
+ - name: checking monitoring commands
+   hosts: all
+   tasks:
+        - name: uptime of the server
+          command: uptime
+          register: up
+          tags: up
+        - debug: var=up.stdout
+
+        - name: kernel version of the server
+          command: uname -a
+          register: ker
+          tags: ker
+        - debug: var=ker.stdout
+        
+        - name: mounted fs info
+          command: df -h
+          register: df
+          tags: df
+        - debug: var=df.stdout_lines
+
+        - name: date of the server
+          command: date
+          register: date
+          tags: date
+        - debug: var=date.stdout
